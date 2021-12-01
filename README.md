@@ -7,5 +7,9 @@ $ npm i
 
 run day:
 ```shell
-$ npx ts-node ./day1
+$ npm start day1
+```
+
+```shell
+$ npm watch day1
 ```

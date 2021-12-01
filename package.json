@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node",
+    "watch": "ts-node-dev --respawn --watch --"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@types/node": "16.11.11",
     "ts-node": "10.4.0",
+    "ts-node-dev": "1.1.8",
     "typescript": "4.5.2"
   }
 }
