@@ -1,0 +1,23 @@
+{
+  "name": "advent-of-code-2021",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radoslawgrochowski/advent-of-code-2021.git"
+  },
+  "author": "radoslawgrochowski",
+  "bugs": {
+    "url": "https://github.com/radoslawgrochowski/advent-of-code-2021/issues"
+  },
+  "homepage": "https://github.com/radoslawgrochowski/advent-of-code-2021#readme",
+  "devDependencies": {
+    "@types/node": "16.11.11",
+    "ts-node": "10.4.0",
+    "typescript": "4.5.2"
+  }
+}
