@@ -117,7 +117,7 @@ const decode = (line: string[]) => {
   );
   const [, output] = line.join(" ").split(" | ");
   const outputWords = output.split(" ");
-  const result = outputWords
+  return outputWords
     .map((word) =>
       word
         .split("")
@@ -126,7 +126,6 @@ const decode = (line: string[]) => {
         .join("")
     )
     .map((x) => digitByDecoded[x]);
-  return result;
 };
 
 const partTwo = async (path: string) => {
