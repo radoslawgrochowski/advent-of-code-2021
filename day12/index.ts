@@ -89,20 +89,20 @@ const partTwo = async (path: string) => {
 };
 
 (async () => {
-  // console.assert(
-  //   (await partOne("./day12/example.txt")) === 10,
-  //   "Part One Example 0"
-  // );
-  //
-  // console.assert(
-  //   (await partOne("./day12/example1.txt")) === 19,
-  //   "Part One Example 1"
-  // );
-  //
-  // console.assert(
-  //   (await partOne("./day12/example2.txt")) === 226,
-  //   "Part One Example 2"
-  // );
+  console.assert(
+    (await partOne("./day12/example.txt")) === 10,
+    "Part One Example 0"
+  );
+
+  console.assert(
+    (await partOne("./day12/example1.txt")) === 19,
+    "Part One Example 1"
+  );
+
+  console.assert(
+    (await partOne("./day12/example2.txt")) === 226,
+    "Part One Example 2"
+  );
 
   console.assert(
     (await partTwo("./day12/example.txt")) === 36,
