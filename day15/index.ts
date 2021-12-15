@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import { log } from "util";
 
 const dataFromFile = async (filePath: string) => {
   const file = await fs.readFile(filePath, "utf8");
@@ -13,14 +14,16 @@ const isSameVertex = (positionA: Vertex, positionB: Vertex) =>
   positionA[0] === positionB[0] && positionA[1] === positionB[1];
 
 const getShortestDistance = (values: number[][]) => {
-  const DISTANCES: Record<string, number> = {};
+  const distances: number[][] = range(values.length).map(() =>
+    range(values.length).map(() => Infinity)
+  );
   const START: Vertex = [0, 0];
   const inRange = ([x, y]: Vertex) =>
     y < values.length && x < values[0].length && y >= 0 && x >= 0;
   const getValue = ([x, y]: Vertex) => values[y][x];
-  const getDistance = ([x, y]: Vertex) => DISTANCES[[x, y].join(":")];
+  const getDistance = ([x, y]: Vertex) => distances[y][x];
   const setDistance = ([x, y]: Vertex, value: number) =>
-    (DISTANCES[[x, y].join(":")] = value);
+    (distances[y][x] = value);
   const getAdjacent = ([x, y]: Vertex): Vertex[] =>
     [
       [-1, 0],
@@ -36,9 +39,6 @@ const getShortestDistance = (values: number[][]) => {
     row.map((value, x) => [x, y] as Vertex)
   );
 
-  unvisited.forEach((vertex) => {
-    setDistance(vertex, Infinity);
-  });
   setDistance(START, 0);
   console.time("last 1000");
   console.time("all");
@@ -49,13 +49,12 @@ const getShortestDistance = (values: number[][]) => {
       console.time("last 1000");
       console.log(unvisited.length + "...");
     }
-    console.time("reduce");
+    // console.time("reduce");
 
     const vertex = unvisited.reduce((min, current) =>
       getDistance(min) > getDistance(current) ? current : min
     );
-    console.timeEnd("reduce");
-    console.time("adjacent");
+    // console.timeEnd("reduce");
 
     const adjacent = getAdjacent(vertex).filter((a) =>
       unvisited.some((b) => isSameVertex(a, b))
@@ -69,11 +68,8 @@ const getShortestDistance = (values: number[][]) => {
         )
       );
     });
-    console.timeEnd("adjacent");
-    console.time("filter");
 
     unvisited = unvisited.filter((x) => !isSameVertex(vertex, x));
-    console.timeEnd("filter");
   }
   console.timeEnd("all");
   return getDistance(END);
