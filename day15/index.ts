@@ -1,5 +1,4 @@
 import fs from "node:fs/promises";
-import { log } from "util";
 
 const dataFromFile = async (filePath: string) => {
   const file = await fs.readFile(filePath, "utf8");
@@ -49,13 +48,9 @@ const getShortestDistance = (values: number[][]) => {
       console.time("last 1000");
       console.log(unvisited.length + "...");
     }
-    // console.time("reduce");
-
     const vertex = unvisited.reduce((min, current) =>
       getDistance(min) > getDistance(current) ? current : min
     );
-    // console.timeEnd("reduce");
-
     const adjacent = getAdjacent(vertex).filter((a) =>
       unvisited.some((b) => isSameVertex(a, b))
     );
@@ -99,18 +94,18 @@ const partTwo = async (path: string) => {
 };
 
 (async () => {
-  // console.assert(
-  //   (await partOne("./day15/example.txt")) === 40,
-  //   "Part One Example"
-  // );
-  //
-  // console.assert(
-  //   (await partOne("./day15/example.txt")) === 315,
-  //   "Part Two Example"
-  // );
+  console.assert(
+    (await partOne("./day15/example.txt")) === 40,
+    "Part One Example"
+  );
+
+  console.assert(
+    (await partTwo("./day15/example.txt")) === 315,
+    "Part Two Example"
+  );
 
   console.log({
     partOne: await partOne("./day15/input.txt"),
-    // partTwo: await partTwo("./day15/input.txt"),
+    partTwo: await partTwo("./day15/input.txt"),
   });
 })();
