@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node",
-    "watch": "ts-node-dev --respawn --watch --"
+    "watch": "ts-node-dev --respawn --watch --",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,11 @@
   },
   "homepage": "https://github.com/radoslawgrochowski/advent-of-code-2021#readme",
   "devDependencies": {
+    "@babel/preset-env": "7.16.5",
+    "@babel/preset-typescript": "7.16.5",
+    "@types/jest": "27.0.3",
     "@types/node": "16.11.11",
+    "jest": "27.4.5",
     "prettier": "latest",
     "ts-node": "10.4.0",
     "ts-node-dev": "1.1.8",
