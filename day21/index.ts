@@ -111,9 +111,15 @@ const partTwo = () => {
   let cache = new Map();
 
   const generateHash = (state: State) =>
-    `${state["1"].position}:${state[1].score}:${state[2].position}:${
-      state[2].score
-    }:${state[1].turn ? "1" : "2"}:${state[1].rollCount}:${state[2].rollCount}`;
+    [
+      state[1].position,
+      state[1].score,
+      state[2].position,
+      state[2].score,
+      state[1].turn ? "1" : "2",
+      state[1].rollCount,
+      state[2].rollCount,
+    ].join(":");
 
   const dice = (state: State, player: "1" | "2", dice: number): State => {
     const {
